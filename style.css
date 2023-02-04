@@ -1,0 +1,112 @@
+body {
+    background-color: rgb(255, 255, 255);
+    font-family: 'Roboto Condensed', sans-serif;
+    margin: 0;
+}
+
+.SpielfeldTable {
+    width: 100%;
+    height: 75vh;
+    background-color: rgb(255, 255, 255);
+    color: white;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+
+}
+
+
+.trGame {
+    width: 33.3333333333333333333333%;
+    height: 10vh;
+    text-align: center;
+    font-size: 1px;
+    background-color: #000000ea;
+    color: rgb(0, 0, 0);
+}
+
+.trGame:hover {
+    background-color: rgb(34, 29, 29);
+    cursor: pointer;
+}
+
+#resultarea {
+    height: 10vh;
+    background-color: #d4e7ff;
+    font-size: 26px;
+    color: rgb(0, 0, 0);
+    line-height: 120%;
+}
+
+#ButtonNeuesSpiel {
+    background-color: #3f51b5;
+    height: 10vh;
+    font-size: 26px;
+    color: white;
+}
+
+img {
+    height: 50px;
+}
+
+button {
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
+    width: 80vw;
+    background-color: #3f51b5;
+    color: white;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-transform: uppercase;
+    font-size: 20px;
+    border: none;
+    border-radius: 2%;
+}
+
+button:hover {
+    background-color: #213294;
+}
+
+.page-content {
+    margin-top: 10px;
+    font-size: 26px;
+}
+
+p {
+    display: flex;
+    justify-content: center;
+}
+
+.Highscore {
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    font-size: 20px;
+    background-color: #d4e7ff;
+}
+
+.trHighscore {
+    height: 3vh;
+}
+
+.spalte1 {
+    text-align: left;
+    width: 75vw;
+}
+
+.spalte2 {
+    width: 25vw;
+    text-align: center;
+}
+
+.kleinesbild {
+    height: 18px;
+}
