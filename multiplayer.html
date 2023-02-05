@@ -1,3 +1,10 @@
+<!--Unterscheidung zwischen Singleplayer und Multiplayer:
+    1. Überschriften/Title
+    2. Benennung Spieler 2 im Highscore
+    2. Übergibt StartGame Function jeweils anderen Inputparameter 
+    <td onclick="StartGame(singleplayer)" colspan="3" id="ButtonNeuesSpiel">Neues Spiel starten</td>
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,11 +59,13 @@
 
                 <table class="Highscore">
                     <tr>
-                        <td class="trHighscore spalte1">Siege Spieler 1  <img src="img/donut.png" alt="" class="kleinesbild"></td>
+                        <td class="trHighscore spalte1">Siege Spieler 1 <img src="img/donut.png" alt=""
+                                class="kleinesbild"></td>
                         <td class="trHighscore spalte2" id="fieldSiege1">0</td>
                     </tr>
                     <tr>
-                        <td class="trHighscore spalte1">Siege Spieler 2  <img src="img/gingerbread.png" alt="" class="kleinesbild"></td>
+                        <td class="trHighscore spalte1">Siege Spieler 2 <img src="img/gingerbread.png" alt=""
+                                class="kleinesbild"></td>
                         <td class="trHighscore spalte2" type="text" id="fieldSiege2">0</td>
                     </tr>
                     <tr>
@@ -70,22 +79,22 @@
                         <td colspan="3" id="resultarea">Klicke Neues Spiel starten</td>
                     </tr>
                     <tr>
-                        <td onclick="ZugSpielen(field1)" class="trGame" type="text" id="field1"></td>
-                        <td onclick="ZugSpielen(field2)" class="trGame" type="text" id="field2"></td>
-                        <td onclick="ZugSpielen(field3)" class="trGame" type="text" id="field3"></td>
+                        <td onclick="ZugSpielen(field1, 'multiplayer')" class="trGame" type="text" id="field1"></td>
+                        <td onclick="ZugSpielen(field2, 'multiplayer')" class="trGame" type="text" id="field2"></td>
+                        <td onclick="ZugSpielen(field3, 'multiplayer')" class="trGame" type="text" id="field3"></td>
                     </tr>
                     <tr>
-                        <td onclick="ZugSpielen(field4)" class="trGame" type="text" id="field4"></td>
-                        <td onclick="ZugSpielen(field5)" class="trGame" type="text" id="field5"></td>
-                        <td onclick="ZugSpielen(field6)" class="trGame" type="text" id="field6"></td>
+                        <td onclick="ZugSpielen(field4, 'multiplayer')" class="trGame" type="text" id="field4"></td>
+                        <td onclick="ZugSpielen(field5, 'multiplayer')" class="trGame" type="text" id="field5"></td>
+                        <td onclick="ZugSpielen(field6, 'multiplayer')" class="trGame" type="text" id="field6"></td>
                     </tr>
                     <tr>
-                        <td onclick="ZugSpielen(field7)" class="trGame" type="text" id="field7"></td>
-                        <td onclick="ZugSpielen(field8)" class="trGame" type="text" id="field8"></td>
-                        <td onclick="ZugSpielen(field9)" class="trGame" type="text" id="field9"></td>
+                        <td onclick="ZugSpielen(field7, 'multiplayer')" class="trGame" type="text" id="field7"></td>
+                        <td onclick="ZugSpielen(field8, 'multiplayer')" class="trGame" type="text" id="field8"></td>
+                        <td onclick="ZugSpielen(field9, 'multiplayer')" class="trGame" type="text" id="field9"></td>
                     </tr>
                     <tr>
-                        <td onclick="StartGame()" colspan="3" id="ButtonNeuesSpiel">Neues Spiel starten</td>
+                        <td onclick="StartGame('multiplayer')" colspan="3" id="ButtonNeuesSpiel">Neues Spiel starten</td>
                     </tr>
                 </table>
             </div>
