@@ -12,6 +12,7 @@ let cells;
 let selectedField;
 let d;
 let t;
+let difficulty;
 
 function StartGame(playmode) {
     FieldClean();
@@ -21,6 +22,7 @@ function StartGame(playmode) {
     resultarea.innerHTML = "Spieler " + SpielerAmZug + " ist am Zug";
     round = 0;
     lastClick = 0
+
     if (playmode == "singleplayer" && SpielerAmZug == 2) {
         d = new Date();
         t = d.getTime();
@@ -30,7 +32,7 @@ function StartGame(playmode) {
         //fieldShort = selectedFieldShort;
         //fieldLong = selectedFieldLong;
         //ZugSpielen(fieldShort, fieldLong, "singleplayer");
-    } 
+    }
 }
 
 function FieldClean() {
@@ -46,7 +48,7 @@ function FieldClean() {
 }
 
 function ZugSpielen(field, playmode) {
-    
+
     d = new Date();
     t = d.getTime();
     if ((playmode == "singleplayer" && t - lastClick > 1000) || (playmode == "multiplayer")) {
@@ -107,15 +109,44 @@ function ZugSpielen(field, playmode) {
     }
 }
 
+function checkFields() {
+    cells = [];
+    for (let i = 1; i <= 9; i++) {
+        cellvalue = document.getElementById("field" + i).innerHTML;
+        cells.push(cellvalue);
+    };
+}
+
 function SelectFieldComputer() {
-    let cellsEmpty = [];
     checkFields();
     selectedField = "";
+    difficulty = document.getElementById("slider1").value;
+    randomIntStrategy = Math.random();
+
     // Spielstrategie: 
     // 1. Wenn schon zwei in a row, dann nimm die dritte in a row und gewinne selbst
     // 2. Wenn Spieler 1 zwei in a row, dann nimm die dritte und vermeide gegnerischen Sieg
     // 3. Wenn 5 frei, dann nimm die 5
     // 4. sonst nimm irgendein anderes freies Feld
+
+    if (difficulty == 3) {
+        strategy3();
+        strategy2();
+        strategy1();
+    } else if (difficulty == 2) {
+        strategy3();
+        strategy2();
+        if (randomIntStrategy > 0.5) {
+            strategy1();
+        }
+        
+    } else { //bei difficulty=0
+        strategy3();
+    }
+    document.querySelector(selectedField).click();
+}
+
+function strategy1() { //eigenen Sieg herbeiführen bzw. gegnerischen Sieg verhindern
     for (let i = 1; i <= 2; i++) {
         spieler = i;
         if ((cells[0].includes(spieler) && cells[1].includes(spieler) && cells[2] == "")) {
@@ -167,29 +198,24 @@ function SelectFieldComputer() {
         } else if ((cells[6].includes(spieler) && cells[2].includes(spieler) && cells[4] == "")) {
             selectedField = "td#field5.trGame";
         }
-
-        if (selectedField == "") {
-            if (document.getElementById("field5").innerHTML.length <= 1) {
-                selectedField = "td#field5.trGame";
-            } else {
-                for (let i = 1; i <= 9; i++) {
-                    cellvalue = document.getElementById("field" + i).innerHTML;
-                    if (cellvalue.length <= 1) {
-                        cellsEmpty.push(i);
-                    }
-                };
-                let randomInt = cellsEmpty[Math.floor(Math.random() * cellsEmpty.length)];
-                selectedField = "td#field" + randomInt + ".trGame";
-            }
-        }
     }
-    document.querySelector(selectedField).click();
 }
 
-function checkFields() {
-    cells = [];
+function strategy2() { //das mittlere Feld nehmen
+    if (document.getElementById("field5").innerHTML.length <= 1) {
+        selectedField = "td#field5.trGame";
+    }
+}
+
+function strategy3() { //reine Zufallswahl
+    let cellsEmpty = [];
     for (let i = 1; i <= 9; i++) {
         cellvalue = document.getElementById("field" + i).innerHTML;
-        cells.push(cellvalue);
+        if (cellvalue.length <= 1) {
+            cellsEmpty.push(i);
+        }
     };
+    let randomInt = cellsEmpty[Math.floor(Math.random() * cellsEmpty.length)];
+    selectedField = "td#field" + randomInt + ".trGame";
 }
+
